@@ -1,33 +1,61 @@
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom'; // 1. Import Routes and Route
 
-// import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Import Components
 import Navbar from './components/Navbar';
 
-// Pages
-import Home from './pages/home';
-// import About from './pages/About'; // Create these later
-// import Events from './pages/Events';
-// import Standards from './pages/Standards';
-// import Certifications from './pages/Certifications';
-// import AreasOfFocus from './pages/AreasOfFocus';
-// import Membership from './pages/Membership';
-// import Login from './pages/Login';
+// Import Pages
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ResearchPage from './pages/ResearchPage';
+import ProjectsPage from './pages/ProjectsPage';
+import TeamPage from './pages/TeamPage';
+import PublicationsPage from './pages/PublicationsPage';
+import LoginPage from './pages/LoginPage';
+
+// This component will hold our main scrolling page
+const MainPage = () => {
+  return (
+    <main className="main-content">
+      <HomePage />
+      <AboutPage />
+      <ResearchPage />
+      <ProjectsPage />
+      <TeamPage />
+      <PublicationsPage />
+    </main>
+  );
+};
 
 function App() {
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+  }, []);
+
+  useEffect(() => {
+    document.body.className = '';
+    if (theme === 'light') document.body.classList.add('light-mode');
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
   return (
-    <Router>
-      <Navbar />
+    <div>
+      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
+      
+      {/* 2. Define your pages here */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/standards" element={<Standards />} />
-        <Route path="/certifications" element={<Certifications />} />
-        <Route path="/areas-of-focus" element={<AreasOfFocus />} />
-        <Route path="/membership" element={<Membership />} />
-        <Route path="/login" element={<Login />} /> */}
+        <Route path="/" element={<MainPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
