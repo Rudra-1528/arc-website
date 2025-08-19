@@ -50,7 +50,7 @@ function App() {
     <div>
       <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
       
-      {/* 2. Define your pages here */}
+      {/* Login page*/}
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />

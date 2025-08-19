@@ -29,7 +29,7 @@ body.light-mode {
 }
 
 body.light-mode .main-header {
-    background-color: #ffffff;
+    background-color:  #ced4da;
     border-bottom: 1px solid #dee2e6;
 }
 
@@ -487,7 +487,7 @@ body.light-mode .publication-item:hover {
 
 body.light-mode #home {
     /* Sets the background for the whole section */
-    background-color: #a6bfd8;
+    background-color: #d4dfeb;
 }
 
 body.light-mode .hero-image-container {

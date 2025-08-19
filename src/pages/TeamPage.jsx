@@ -23,8 +23,8 @@ const TeamPage = () => {
                     </div>
                     <div className="person-card">
                         <img src="https://via.placeholder.com/150" alt="Team Member 4" className="person-image" />
-                        <h4 style={{ color: 'black' }}>Dr. Alan Turing</h4>
-                        <p style={{ color: 'black' }}>Faculty Advisor</p>
+                        <h4 style={{ color: '' }}>Dr. Alan Turing</h4>
+                        <p style={{ color: '' }}>Faculty Advisor</p>
                     </div>
                 </div>
             </div>
