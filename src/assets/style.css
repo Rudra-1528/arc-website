@@ -5,7 +5,7 @@ body {
     line-height: 1.6;
     background-color: #0d0c1d;
     color: #e4e6eb;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 2s ease, color 1s ease;
 }
 
 a {
@@ -487,7 +487,7 @@ body.light-mode .publication-item:hover {
 
 body.light-mode #home {
     /* Sets the background for the whole section */
-    background-color: #d4dfeb;
+    background-color: #4b5d6f;
 }
 
 body.light-mode .hero-image-container {
@@ -511,3 +511,16 @@ body.light-mode .hero-subtitle {
     /* Overrides the text color to be dark gray */
     color: #555555;
 }
+
+body.light-mode .theme-toggle-btn {
+    background-color: #d4d4ec;
+    color: #151515;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: background-color 0.3s ease;
+} 
+   

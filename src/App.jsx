@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'; // 1. Import Routes and Route
 
 // Import Components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 // Import Pages
 import HomePage from './pages/HomePage';
@@ -55,6 +56,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }

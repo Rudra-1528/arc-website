@@ -1,18 +1,22 @@
 
 // Receive toggleTheme and currentTheme as props
 import { Link } from 'react-router-dom'; // 1. Import Link
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+// import arcLogo from '../../assets/arc-logo.png';
 
 const Navbar = ({ toggleTheme, currentTheme }) => {
     return (
         <header className="main-header">
             <div className="logo">
-                <Link to="/"> {/* 2. Change to Link */}
+                <Link to="/"> 
+                    {/* <img src={arcLogo} alt="ARC Logo" className="logo-img" /> */}
                     <span className="logo-text">ARC</span>
                 </Link>
             </div>
             <nav className="main-nav">
                 <ul className="nav-links">
-                    {/* These can remain as anchor links if they scroll on the home page */}
+                    
                     <li><a href="/#home">HOME</a></li>
                     <li><a href="/#about">ABOUT US</a></li>
                     <li><a href="/#research">RESEARCH</a></li>
@@ -25,7 +29,15 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
                      
                 </ul>
                 <button onClick={toggleTheme} className="theme-toggle-btn">
-                    {currentTheme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+                    {currentTheme === 'dark' ? (
+                        <>
+                            <FontAwesomeIcon icon={faSun} /> Light
+                        </>
+                    ) : (
+                        <>
+                            <FontAwesomeIcon icon={faMoon} /> Dark
+                        </>
+                    )}
                 </button>
             </nav>
         </header>
