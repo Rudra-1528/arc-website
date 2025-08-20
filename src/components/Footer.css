@@ -1,5 +1,5 @@
 .main-footer {
-    background-color: #0d0c1d;
+    background-color: #100e25;
     color: #a0a0c4;
     padding: 60px 40px 20px 40px; /* More top padding */
     border-top: 1px solid #2a2a47;
@@ -87,7 +87,7 @@
 
 /* --- Light Mode Styles for Footer --- */
 body.light-mode .main-footer {
-    background-color: #e9ecef;
+    background-color: #dad8d8;
     color: #555555;
     border-top: 1px solid #dee2e6;
 }

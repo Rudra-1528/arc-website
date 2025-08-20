@@ -1,43 +1,50 @@
-
-// Receive toggleTheme and currentTheme as props
-import { Link } from 'react-router-dom'; // 1. Import Link
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // We will use Link for all navigation
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 // import arcLogo from '../../assets/arc-logo.png';
 
 const Navbar = ({ toggleTheme, currentTheme }) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const handleMenuToggle = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <header className="main-header">
             <div className="logo">
-                <Link to="/"> 
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
                     {/* <img src={arcLogo} alt="ARC Logo" className="logo-img" /> */}
-                    <span className="logo-text">ARC</span>
+                    <div className='logo-text'>
+                        <div className="logo-maintext">ARC</div>
+                        <div className="logo-subtext">Autonomous Robotics Center</div>
+                    </div>
                 </Link>
             </div>
+            
             <nav className="main-nav">
-                <ul className="nav-links">
-                    
-                    <li><a href="/#home">HOME</a></li>
-                    <li><a href="/#about">ABOUT US</a></li>
-                    <li><a href="/#research">RESEARCH</a></li>
-                    <li><a href="/#projects">PROJECTS</a></li>
-                    <li><a href="/#people">TEAM</a></li>
-                    <li><a href="/#publications">PUBLICATIONS</a></li>
+                <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+                    {/* All links are now <Link> components pointing to new pages */}
+                    <li><Link to="/" onClick={() => setIsMenuOpen(false)}>HOME</Link></li>
+                    <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>ABOUT US</Link></li>
+                    <li><Link to="/research" onClick={() => setIsMenuOpen(false)}>RESEARCH</Link></li>
+                    <li><Link to="/projects" onClick={() => setIsMenuOpen(false)}>PROJECTS</Link></li>
+                    <li><Link to="/team" onClick={() => setIsMenuOpen(false)}>TEAM</Link></li>
+                    <li><Link to="/publications" onClick={() => setIsMenuOpen(false)}>PUBLICATIONS</Link></li>
 
-                    {/* 3. Change these to Link for separate pages */}
-                    <li><Link to="/login">LOGIN</Link></li>
-                     
+                    <button onClick={toggleTheme} className="theme-toggle-btn">
+                        {currentTheme === 'dark' ? (
+                            <><FontAwesomeIcon icon={faSun} /> Light</>
+                        ) : (
+                            <><FontAwesomeIcon icon={faMoon} /> Dark</>
+                        )}
+                    </button>
                 </ul>
-                <button onClick={toggleTheme} className="theme-toggle-btn">
-                    {currentTheme === 'dark' ? (
-                        <>
-                            <FontAwesomeIcon icon={faSun} /> Light
-                        </>
-                    ) : (
-                        <>
-                            <FontAwesomeIcon icon={faMoon} /> Dark
-                        </>
-                    )}
+              
+
+                <button className="hamburger-menu" onClick={handleMenuToggle}>
+                    <div /><div /><div />
                 </button>
             </nav>
         </header>

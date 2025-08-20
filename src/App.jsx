@@ -12,21 +12,8 @@ import ResearchPage from './pages/ResearchPage';
 import ProjectsPage from './pages/ProjectsPage';
 import TeamPage from './pages/TeamPage';
 import PublicationsPage from './pages/PublicationsPage';
-import LoginPage from './pages/LoginPage';
 
-// This component will hold our main scrolling page
-const MainPage = () => {
-  return (
-    <main className="main-content">
-      <HomePage />
-      <AboutPage />
-      <ResearchPage />
-      <ProjectsPage />
-      <TeamPage />
-      <PublicationsPage />
-    </main>
-  );
-};
+
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -51,15 +38,21 @@ function App() {
     <div>
       <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
       
-      {/* Login page*/}
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-
+      <main className="main-content">
+        <Routes>
+          {/* Define a route for each page */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/research" element={<ResearchPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/publications" element={<PublicationsPage />} />
+        </Routes>
+      </main>
+      
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

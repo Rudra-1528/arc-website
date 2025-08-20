@@ -5,7 +5,7 @@ body {
     line-height: 1.6;
     background-color: #0d0c1d;
     color: #e4e6eb;
-    transition: background-color 2s ease, color 1s ease;
+    transition: background-color 1s ease, color 1s ease;
 }
 
 a {
@@ -24,25 +24,33 @@ h1, h2, h3, h4 {
 
 /* --- Light Mode Toggle (UPDATED) --- */
 body.light-mode {
-    background-color: #f4f6f8; /* Soft gray background */
+    background-color: #F8F9FA; 
     color: #12122b; /* Dark navy text */
 }
 
 body.light-mode .main-header {
-    background-color:  #ced4da;
+    background-color:  #FFFFFF;
     border-bottom: 1px solid #dee2e6;
 }
 
+
 body.light-mode .logo-text {
+    color: #212529;
+}
+
+body.light-mode .logo-text .logo-subtext {
     color: #12122b;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 body.light-mode .nav-links a {
-    color: #555555;
+    color: #6C757D;
 }
 
 body.light-mode .nav-links a:hover {
-    color: #12122b;
+    color: #121231; 
 }
 
 body.light-mode .hero-title {
@@ -108,6 +116,18 @@ body.light-mode .publication-item:hover {
     left: 0;
     z-index: 1000;
     box-sizing: border-box;
+}
+
+.main-header .logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-header .logo-text .logo-subtext {
+    font-size: 10px;
+    font-weight: 700;
+    color: #e4e6eb;
+    letter-spacing: 2px;
 }
 
 .main-header .logo-text {
@@ -499,7 +519,8 @@ body.light-mode .publication-item:hover {
 
 body.light-mode #home {
     /* Sets the background for the whole section */
-    background-color: #4b5d6f;
+    background-color: #c2c7c2; 
+    
 }
 
 body.light-mode .hero-image-container {
@@ -536,3 +557,308 @@ body.light-mode .theme-toggle-btn {
     transition: background-color 0.3s ease;
 } 
    
+
+
+/* --- Responsive Navbar Styles --- */
+
+/* Style for the hamburger menu button itself */
+.hamburger-menu {
+    display: none; /* Hidden by default on large screens */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    z-index: 1001; 
+}
+
+.hamburger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: #e4e6eb; 
+    border-radius: 5px;
+}
+
+body.light-mode .hamburger-menu div {
+    background-color: #12122b; /* Hamburger color in light mode */
+}
+
+
+/* This is the media query - it applies styles only on smaller screens */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none; /* Hide the links list by default */
+        position: absolute;
+        top: 80px; 
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #12122b; /* Dark background for the menu */
+        padding: 20px 0;
+    }
+
+    .nav-links.open {
+        display: flex; /* Show the menu when it has the 'open' class */
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show the hamburger button on small screens */
+    }
+
+    body.light-mode .nav-links {
+        background-color: #ffffff; /* Light background for the menu */
+    }
+}
+
+/* --- Responsive Theme Toggle Button Styles --- */
+
+/* Hide the button inside the list on large screens */
+.nav-links .mobile-theme-toggle {
+    display: none;
+}
+
+/* On small screens, the magic happens */
+@media (max-width: 1100px) {
+    /* Hide the original button that's outside the list */
+    .main-nav > .theme-toggle-btn {
+        display: none;
+    }
+
+    /* Show the new button that's inside the list */
+    .nav-links .mobile-theme-toggle {
+        display: block; /* Make it visible */
+        margin-top: 15px; /* Add some space above it */
+        padding: 0 20px; /* Add some padding */
+    }
+
+    /* Make the button fill the space for a better look */
+    .nav-links .theme-toggle-btn {
+        width: 95%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 810px) {
+    /* Hide the original button that's outside the list */
+    .main-nav > .theme-toggle-btn {
+        display: none;
+    }
+
+    /* Show the new button that's inside the list */
+    .nav-links .mobile-theme-toggle {
+        display: block; /* Make it visible */
+        margin-top: 15px; /* Add some space above it */
+        padding: 0 20px; /* Add some padding */
+    }
+
+    /* Make the button fill the space for a better look */
+    .nav-links .theme-toggle-btn {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* --- Homepage Sections General Styling --- */
+.home-section {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.home-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #5d5dff;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #8c8cff;
+    color: #fff;
+}
+
+/* --- Key Research Section --- */
+.research-highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #12122b;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #2a2a47;
+}
+
+.feature-icon {
+    font-size: 40px;
+    color: #5d5dff;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    color: #e4e6eb;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #a0a0c4;
+}
+
+/* --- Featured Project Section --- */
+.featured-project-section {
+    background-color: #12122b;
+}
+
+.featured-project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    text-align: left;
+}
+
+.featured-project-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.featured-project-content h3 {
+    font-size: 2em;
+}
+
+/* --- Latest News Section --- */
+.news-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.news-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 0;
+    border-bottom: 1px solid #2a2a47;
+}
+
+.news-item:first-child {
+    border-top: 1px solid #2a2a47;
+}
+
+.news-item h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #e4e6eb;
+}
+
+.news-date {
+    font-size: 0.9em;
+    color: #a0a0c4;
+    margin-top: 5px;
+}
+
+.news-read-more {
+    color: #5d5dff;
+    font-weight: 600;
+}
+
+/* --- Our Partners Section --- */
+.partners-logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.partners-logo-grid img {
+    height: 60px; /* Adjust as needed */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.partners-logo-grid img:hover {
+    opacity: 1;
+}
+
+/* --- Light Mode for New Sections --- */
+body.light-mode .home-section h2 {
+    color: #12122b;
+}
+
+body.light-mode .feature-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+}
+
+body.light-mode .feature-card h3 {
+    color: #12122b;
+}
+
+body.light-mode .feature-card p {
+    color: #555555;
+}
+
+body.light-mode .featured-project-section {
+    background-color: #ffffff;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
+body.light-mode .news-item {
+    border-color: #dee2e6;
+}
+body.light-mode .news-item:first-child {
+    border-color: #dee2e6;
+}
+body.light-mode .news-item h3 {
+    color: #12122b;
+}
+body.light-mode .news-date {
+    color: #555555;
+}
+
+body.light-mode .partners-logo-grid img {
+    opacity: 0.8;
+    filter: grayscale(50%);
+}
+body.light-mode .partners-logo-grid img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* --- Responsive adjustments for new sections --- */
+@media (max-width: 768px) {
+    .featured-project-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
